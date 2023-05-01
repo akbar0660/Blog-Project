@@ -1,0 +1,15 @@
+C:\github repos\project\Main\Core\Application\bin\Debug\net5.0\Application.deps.json
+C:\github repos\project\Main\Core\Application\bin\Debug\net5.0\Application.dll
+C:\github repos\project\Main\Core\Application\bin\Debug\net5.0\Application.pdb
+C:\github repos\project\Main\Core\Application\bin\Debug\net5.0\Domain.dll
+C:\github repos\project\Main\Core\Application\bin\Debug\net5.0\Domain.pdb
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.csproj.AssemblyReference.cache
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.AssemblyInfoInputs.cache
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.AssemblyInfo.cs
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.csproj.CopyComplete
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.dll
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\refint\Application.dll
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\Application.pdb
+C:\github repos\project\Main\Core\Application\obj\Debug\net5.0\ref\Application.dll

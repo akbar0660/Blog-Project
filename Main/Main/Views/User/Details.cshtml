@@ -1,0 +1,44 @@
+﻿@model AppUser
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h3 class="card-title">Details</h3>
+                    <div>
+                        <h5>Name : @Model.Name</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Username : @Model.UserName</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Surname : @Model.Surname</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Email : @Model.Email</h5>
+                    </div>
+                    <br />
+                    <div>
+                        @if (ViewBag.Role.Contains("Admin"))
+                        {
+                            <h5>Role : Admin</h5>
+                        }
+                        @if (ViewBag.Role.Contains("Writer"))
+                        {
+                            <h5>Role : Writer</h5>
+                        }
+                        else
+                        {
+                            <h5>Role : Customer</h5>
+                        }
+                    </div>
+                    <br />
+                    <a class="btn btn-danger" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

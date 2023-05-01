@@ -1,0 +1,54 @@
+﻿@model AppUser
+<div class="main-panel">
+    <div class="content-wrapper">
+        <h1>Create User</h1>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create Category</h4>
+                    <form class="forms-sample" asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="@Model.Name" for="exampleInputName1">Name</label>
+                            <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Name" style="color:white">
+                            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Surname" for="exampleInputName1">Surname</label>
+                            <input asp-for="@Model.Surname" type="text" class="form-control" placeholder="Surname" style="color:white">
+                            <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.UserName" for="exampleInputName1">Username</label>
+                            <input asp-for="@Model.UserName" type="text" class="form-control" placeholder="Username" style="color:white">
+                            <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Email" for="exampleTextarea1">Email</label>
+                            <input asp-for="@Model.Email" type="email" class="form-control" placeholder="Email" style="color:white" />
+                            <span class="text-danger" asp-validation-for="@Model.Email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Password" for="exampleTextarea1">Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" placeholder="Password" style="color:white" />
+                            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Select role</label>
+                            <select class="form-control" name="rolename">
+                                @foreach (Microsoft.AspNetCore.Identity.IdentityRole roles in ViewBag.Roles)
+                                {
+                                    <option value="@roles.Name">@roles.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-dark" asp-action="Index">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

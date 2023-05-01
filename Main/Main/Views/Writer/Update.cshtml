@@ -1,0 +1,49 @@
+﻿
+@model Writer
+<div class="main-panel">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Writer</h4>
+                <form class="forms-sample" asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="@Model.Name" for="exampleInputName1">Name</label>
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Name" style="color:white">
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email">Email *</label>
+                        <input asp-for="@Model.Email" type="email" class="form-control p_input" placeholder="Email" style="color:white">
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Password">Password *</label>
+                        <input asp-for="@Model.Password" type="password" class="form-control p_input" placeholder="Password" style="color:white">
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Photo"></label>
+                        <input accept="image/*" asp-for="@Model.Photo" class="form-control" style="color:white">
+                        <span class="text-danger" asp-validation-for="@Model.Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.About" for="exampleTextarea1">About</label>
+                        <textarea asp-for="@Model.About" maxlength="100" class="form-control" rows="4" placeholder="About" style="color:white"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.About"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Adress" for="exampleTextarea1">Adress</label>
+                        <textarea asp-for="@Model.Adress" maxlength="100" class="form-control" rows="4" placeholder="Adress" style="color:white"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.Adress"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-dark" asp-action="Index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

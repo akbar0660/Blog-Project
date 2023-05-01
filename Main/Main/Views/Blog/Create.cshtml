@@ -1,0 +1,52 @@
+﻿@model Blog 
+<div class="main-panel">
+    <h1>Create Blog</h1>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic form elements</h4>
+                <p class="card-description"> Basic form elements </p>
+                <form class="forms-sample" asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="@Model.Title" for="exampleInputName1">Title</label>
+                        <input asp-for="@Model.Title" type="text" class="form-control" placeholder="Name" style="color:white">
+                        <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Photo"></label>
+                        <input accept="image/*" asp-for="@Model.Photo" class="form-control" style="color:white">
+                        <span class="text-danger" asp-validation-for="@Model.Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select category</label>
+                        <select class="form-control" name="CategoryId">
+                            @foreach (Category cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select writer</label> 
+                        <select class="form-control" name="WriterId">
+                            @foreach (Writer writer in ViewBag.Writers)
+                            {
+                                <option value="@writer.Id">@writer.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Content" for="exampleTextarea1">Content</label>
+                        <textarea asp-for="@Model.Content" maxlength="100" class="form-control" rows="4" style="color:white"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.Content"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button asp-action="Index" class="btn btn-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+}

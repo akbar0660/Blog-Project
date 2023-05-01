@@ -1,0 +1,29 @@
+﻿@model EmailModel
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <h2>Send Email</h2>
+        <form class="form-panel" asp-action="SendEmail" asp-controller="Email" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.ToEmail">To:</label>
+                <input asp-for="@Model.ToEmail" type="email" class="form-control" required style="color:white">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Subject''">Subject:</label>
+                <input asp-for="@Model.Subject" type="text" class="form-control" required style="color:white">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Message">Content:</label>
+                <textarea asp-for="@Model.Message" class="form-control" required style="color:white"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

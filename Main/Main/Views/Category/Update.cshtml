@@ -1,0 +1,28 @@
+﻿@model Category
+<div class="main-panel">
+    <h1>Update Category</h1>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <br />
+                <form class="forms-sample" asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="@Model.Name" for="exampleInputName1">Title</label>
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Name" style="color:white">
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Description" for="exampleTextarea1">Content</label>
+                        <textarea asp-for="@Model.Description" maxlength="100" class="form-control" rows="4" style="color:white"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.Description"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-dark" asp-action="Index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    }

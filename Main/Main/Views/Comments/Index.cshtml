@@ -1,0 +1,87 @@
+﻿@model List<Comment>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="table-responsive">
+            <h4>Comment Table</h4>
+            <table class="table table-bordered" id="commentTable">
+                <thead>
+                    <tr>
+                        <th style="width:400px;text-align:center"> Comment Title </th>
+                        <th style="width:250px;text-align:center"> Created Date </th>
+                        <th style="width:400px;text-align:center"> Status </th>
+                        <th style="width:250px;text-align:center"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Comment item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:center;"> @item.Title </td>
+                            <td>@item.CreatedDate.ToString("yyyy/MM/dd")</td>
+                            <td style="text-align: center;">
+                                @if (item.Status)
+                                {
+                                    <span class="text-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Passive</span>
+                                }
+                            </td>
+                            <td class="d-flex justify-content-end">
+                                <a class="btn btn-primary btn-rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>                                @if (item.Status)
+                                {
+                                    <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-success" style="margin-right: 5px;width:120px">DeActivate</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-danger" style="margin-right: 5px;width:120px">Activate</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <nav aria-label="...">
+            <ul id="pagination" class="pagination d-flex justify-content-center">
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    <li class="page-item" aria-current="page">
+                        <a id="myPage-@i" class="page-link" href="#" data-value="@i">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var selectedPage = 1;
+        $(document).ready(function () {
+            highlightSelectedPage();
+            $("[id^='myPage-']").on('click', function () {
+                var page = $(this).data("value");
+                $.ajax({
+                    url: '@Url.Action("Pagination", "Comment", new { area = "default" })',
+                    type: "get",
+                    data: {
+                        "page": page
+                    },
+                    success: function (response) {
+                        $("#commentTable").html(response);
+                        selectedPage = page;
+                        highlightSelectedPage();
+                    }
+                });
+            });
+        });
+        function highlightSelectedPage() {
+            $("#pagination li").removeClass("active");
+            $("#myPage-" + selectedPage).parent().addClass("active");
+        }
+    </script>
+}
+

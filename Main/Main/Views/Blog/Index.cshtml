@@ -1,0 +1,208 @@
+﻿@model List<Blog>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="d-flex justify-content-around">
+            <div>
+                <form>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <label for="ddlYears">Years:</label>
+                            <select id="ddlYears" name="year">
+                                @if (ViewBag.SelectedYear == "all")
+                                {
+                                    <option value="all" selected>All</option>
+                                }
+                                else
+                                {
+                                    <option value="all">All</option>
+                                }
+                                @foreach (var year in ViewBag.Years)
+                                {
+                                    if (ViewBag.SelectedYear == year)
+                                    {
+                                        <option value="@year" selected>@year</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@year">@year</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div style="margin-left:20px">
+                            <label for="ddlCategories">Categories:</label>
+                            <select id="ddlCategory" name="category">
+                                @if (ViewBag.SelectedCategory == "all")
+                                {
+                                    <option value="all" selected>All</option>
+                                }
+                                else
+                                {
+                                    <option value="all">All</option>
+                                }
+                                @foreach (Category category in ViewBag.Categories)
+                                {
+                                    if (ViewBag.SelectedCategory == category.Name)
+                                    {
+                                        <option value="@category.Name" selected>@category.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@category.Name">@category.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <div style="display:flex;justify-content:space-between">
+                        @if (ViewBag.Key != null)
+                        {
+                            <div><input class="form-control" id="mySearch" type="search" value="@ViewBag.Key" placeholder="search" style="color:white" /></div>
+                        }
+                        else
+                        {
+                            <div><input class="form-control" id="mySearch" type="search" placeholder="search" style="color:white" /></div>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="col-lg-6 grid-margin stretch-card" style="width:100%;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Blog Table</h4>
+                    <div class="table-responsive">
+                        <table class="table" id="blogTable" style="margin-top:20px">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Writer</th>
+                                    <th>Creating Date</th>
+                                    <th>Last Update Date</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Blog item in Model)
+                                {
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="../../assets/images/faces/@item.Image" alt="image">
+                                        </td>
+                                        <td>@item.Title</td>
+                                        <td>@item.Writer.Name</td>
+                                        <td>@item.CreatedDate.ToString("yyyy/MM/dd")</td>
+                                        <th>@item.LastUpdatedDate.ToString("yyyy/MM/dd")</th>
+                                        <td>@item.Category.Name</td>
+                                        <td>
+                                            @if (item.Status)
+                                            {
+                                                <span class="text-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Passive</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-rounded" asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                            <a class="btn btn-secondary btn-rounded" style="margin-left:10px;margin-right:10px;" asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                            @if (item.Status)
+                                            {
+                                                <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-success" style="margin-right: 5px;width:120px">DeActivate</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-danger" style="margin-right: 5px;width:120px">Activate</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav aria-label="...">
+            <ul id="pagination" class="pagination d-flex justify-content-center">
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    <li class="page-item" aria-current="page">
+                        <a id="myPage-@i" class="page-link" href="#" data-value="@i">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <br />
+        <br />
+        <a class="btn btn-danger" style="width:10%" asp-controller="Blog" asp-action="Create">Create</a>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#ddlYears, #ddlCategory').on('change', function () {
+                $.ajax({
+                    url: "/Blog/FilterAndSearchBlogs/",
+                    type: "get",
+                    data: {
+                        "year": $("#ddlYears").val(),
+                        "category": $("#ddlCategory").val()
+                    },
+                    success: function (response) {
+                        $("#blogTable").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).on("keyup", "#mySearch", function () {
+            console.log("salam")
+            $.ajax({
+                url: "/Blog/FilterAndSearchBlogs/",
+                type: "get",
+                data: {
+                    "key": $("#mySearch").val()
+                },
+                success: function (response) {
+                    $("#blogTable").html(response);
+                }
+            });
+        });
+    </script>
+    <script>
+        var selectedPage = 1;
+        $(document).ready(function () {
+            highlightSelectedPage();
+            $("[id^='myPage-']").on('click', function () {
+                var page = $(this).data("value");
+                $.ajax({
+                    url: "/Blog/Pagination/",
+                    type: "get",
+                    data: {
+                        "page": page
+                    },
+                    success: function (response) {
+                        $("#blogTable").html(response);
+                        selectedPage = page;
+                        highlightSelectedPage();
+                    }
+                });
+            });
+        });
+        function highlightSelectedPage() {
+            $("#pagination li").removeClass("active");
+            $("#myPage-" + selectedPage).parent().addClass("active");
+        }
+    </script>
+}

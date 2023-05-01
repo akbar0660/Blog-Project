@@ -1,0 +1,109 @@
+﻿@model List<Writer>
+@{
+    int a = 1;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Writers table</h4>
+                <p class="card-description">
+                    <div class="table-responsive">
+                        <table class="table table-dark" id="writerTable">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Image </th>
+                                    <th> Name </th>
+                                    <th> Email </th>
+                                    <th> Adress </th>
+                                    <th> Status </th>
+                                    <th> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Writer item in Model)
+                                {
+                                    <tr>
+                                        <td>@a</td>
+                                        <td class="py-1">
+                                            <img src="../../assets/images/faces/@item.Image" alt="image">
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Adress</td>
+                                        <td>
+                                            @if (item.Status)
+                                            {
+                                                <span class="text-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Passive</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-rounded" asp-controller="Writer" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                            <a class="btn btn-secondary btn-rounded" style="margin-left:10px;margin-right:10px;" asp-controller="Writer" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                            @if (item.Status)
+                                            {
+                                                <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-success" style="margin-right: 5px;width:120px">DeActivate</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-danger" style="margin-right: 5px;width:120px">Activate</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    a++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <nav aria-label="...">
+            <ul id="pagination" class="pagination d-flex justify-content-center">
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    <li class="page-item" aria-current="page">
+                        <a id="myPage-@i" class="page-link" href="#" data-value="@i">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <br />
+        <a style="width:100px;height:40px;padding-top:11px;" class="btn btn-warning btn-rounded" asp-controller="Writer" asp-action="Create">Create</a>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var selectedPage = 1;
+        $(document).ready(function () {
+            highlightSelectedPage();
+            $("[id^='myPage-']").on('click', function () {
+                var page = $(this).data("value");
+                $.ajax({
+                    url: "/Writer/Pagination/",
+                    type: "get",
+                    data: {
+                        "page": page
+                    },
+                    success: function (response) {
+                        $("#writerTable").html(response);
+                        selectedPage = page;
+                        highlightSelectedPage();
+                    }
+                });
+            });
+        });
+        function highlightSelectedPage() {
+            $("#pagination li").removeClass("active");
+            $("#myPage-" + selectedPage).parent().addClass("active");
+        }
+
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model List<Category>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width:400px;text-align:center"> Category Name </th>
+            <th style="width:250px;text-align:center"> Last updated date </th>
+            <th style="width:400px;text-align:center"> Status </th>
+            <th style="width:250px;text-align:center"> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category item in Model)
+        {
+            <tr>
+                <td style="text-align:center;"> @item.Name </td>
+                <td>@item.LastUpdatedTime.ToString("yyyy/MM/dd")</td>
+                <td style="text-align: center;">
+                    @if (item.Status)
+                    {
+                        <span class="text-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Passive</span>
+                    }
+                </td>
+                <td class="d-flex justify-content-end">
+                    <a class="btn btn-primary btn-rounded" asp-controller="Category" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-secondary btn-rounded" style="margin-left:10px;margin-right:10px;" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    @if (item.Status)
+                    {
+                        <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-success" style="margin-right: 5px;width:120px">DeActivate</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn btn-danger" style="margin-right: 5px;width:120px">Activate</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

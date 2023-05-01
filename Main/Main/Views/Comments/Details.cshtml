@@ -1,0 +1,29 @@
+﻿@model Comment
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h3 class="card-title">Details</h3>
+                    <div>
+                        <h5>Blog : @Model.Blog.Title</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Username : @ViewBag.Username</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Title : @Model.Title</h5>
+                    </div>
+                    <br />
+                    <div>
+                        <h5>Content : @Model.Content</h5>
+                    </div>
+                    <br />
+                    <a class="btn btn-danger" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

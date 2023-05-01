@@ -1,0 +1,12 @@
+C:\github repos\project\Main\Core\Domain\bin\Debug\net5.0\Domain.deps.json
+C:\github repos\project\Main\Core\Domain\bin\Debug\net5.0\Domain.dll
+C:\github repos\project\Main\Core\Domain\bin\Debug\net5.0\Domain.pdb
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.dll
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\refint\Domain.dll
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\Domain.pdb
+C:\github repos\project\Main\Core\Domain\obj\Debug\net5.0\ref\Domain.dll

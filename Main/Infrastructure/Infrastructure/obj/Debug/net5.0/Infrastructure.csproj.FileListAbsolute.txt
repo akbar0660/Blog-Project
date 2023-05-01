@@ -1,0 +1,17 @@
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.dll
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Domain.dll
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.pdb
+C:\github repos\project\Main\Infrastructure\Infrastructure\bin\Debug\net5.0\Domain.pdb
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\refint\Infrastructure.dll
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\github repos\project\Main\Infrastructure\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
